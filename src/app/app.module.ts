@@ -11,6 +11,8 @@ import { WishlistDetailComponent } from './wishlist/wishlist-detail/wishlist-det
 import { WishlistEditComponent } from './wishlist/wishlist-edit/wishlist-edit.component';
 import { LibraryDetailComponent } from './library/library-detail/library-detail.component';
 import { LibraryEditComponent } from './library/library-edit/library-edit.component';
+import { HeaderComponent } from './header.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -23,10 +25,12 @@ import { LibraryEditComponent } from './library/library-edit/library-edit.compon
     WishlistDetailComponent,
     WishlistEditComponent,
     LibraryDetailComponent,
-    LibraryEditComponent
+    LibraryEditComponent,
+    HeaderComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
