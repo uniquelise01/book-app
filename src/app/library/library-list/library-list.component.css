@@ -13,3 +13,8 @@
 .pointer {
     cursor: pointer;
 }
+
+.center-panel {
+    max-width: 100%;
+    margin-top: 15px;
+}

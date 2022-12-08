@@ -19,12 +19,12 @@ export class LibraryListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.libraryService.getLibrary();
 
-    this.libraryService.
-    libraryChangedEvent.subscribe(
-      (books: Book[]) => {
-        this.books = books;
-      }
-    )
+    // this.libraryService.
+    // libraryChangedEvent.subscribe(
+    //   (books: Book[]) => {
+    //     this.books = books;
+    //   }
+    // )
 
     this.subscription = this.libraryService.libraryListChangedEvent.subscribe(
       (libraryList: Book[]) => {
@@ -39,6 +39,7 @@ export class LibraryListComponent implements OnInit, OnDestroy {
 
   onSelectLibrary(){
     this.librarySelected = true;
+    
   }
 
   onSelectReadingList(){

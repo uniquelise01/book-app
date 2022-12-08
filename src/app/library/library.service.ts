@@ -31,6 +31,8 @@ export class LibraryService {
                 (responseData) => {
                    this.books = responseData.library;
                    this.sortAndSend();
+
+                   this.libraryChangedEvent.next(this.books.slice());
                 },
                 (error: any) => {
                    console.log(error);
@@ -39,7 +41,7 @@ export class LibraryService {
     }
     
     getBook(id: string) {
-      return this.http.get<{ message: string, book: Book }>('http://localhost:3000/library/' + id);
+      return this.http.get<{ message: string, library: Book }>('http://localhost:3000/library/' + id);
     }
     
     

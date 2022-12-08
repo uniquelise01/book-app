@@ -10,7 +10,7 @@ import { WindRefService } from 'src/app/wind-ref.service';
   styleUrls: ['./library-detail.component.css']
 })
 export class LibraryDetailComponent implements OnInit {
-  @Input() book: Book;
+  book: Book;
   id: string;
   nativeWindow: any;
 
@@ -29,7 +29,8 @@ export class LibraryDetailComponent implements OnInit {
           this.id = params['id'];
           this.libraryService.getBook(this.id)
             .subscribe(libraryData => {
-              this.book = libraryData.book;
+              this.book = libraryData.library;
+              console.log(libraryData);
             });
         }
       );

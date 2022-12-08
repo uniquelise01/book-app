@@ -1,12 +1,36 @@
 const sequenceGenerator = require('./sequenceGenerator');
-const Library = require('../models/library');
+const Libraries = require('../models/library');
 
 var express = require('express');
 var router = express.Router();
 
 router.get('/', (req, res, next) => {
-    Library.find()
+    Libraries.find()
+        .populate('series')
         .then(library => {
+            console.log(library);
+            res
+                .status(200)
+                .json({
+                    message: 'Library fetched successfully!',
+                    library: library
+                });
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'An error occured',
+                error: error
+            });
+        });
+ });
+
+ router.get('/:id', (req, res, next) => {
+    Libraries.findOne({
+        "id": req.params.id
+    })
+        .populate('series')
+        .then(library => {
+            console.log(library);
             res
                 .status(200)
                 .json({

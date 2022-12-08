@@ -6,7 +6,7 @@ var router = express.Router();
 
 router.get('/', (req, res, next) => {
     Bookclub.find()
-        .populate('group')
+        .populate('favBooks')
         .then(bookclub => {
             res
                 .status(200)
@@ -27,7 +27,7 @@ router.get('/', (req, res, next) => {
     Bookclub.findOne({
         "id": req.params.id
     })
-        .populate('group')
+        .populate('favBooks')
         .then(bookclub => {
             res
                 .status(200)

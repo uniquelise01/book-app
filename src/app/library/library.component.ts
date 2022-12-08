@@ -18,6 +18,8 @@ export class LibraryComponent implements OnInit {
         this.selectedBook = book;
       }
     )
+
+    console.log(this.selectedBook);
   }
 
 }

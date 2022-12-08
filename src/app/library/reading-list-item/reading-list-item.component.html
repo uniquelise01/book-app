@@ -1,9 +1,9 @@
 <a [routerLink]="[book.id]" routerLinkActive="active" class="list-group-item clearfix" *ngIf="book.readlist">
-    <div class="pull-left">
-        <h4 class="list-group-item-heading">{{ book?.title }}</h4>
-        <p>{{ book?.author }}</p>
-    </div>
-    <span class="pull-right">
+    <span class="pull-left">
         <img [src]="book?.imageUrl" alt="{{ book?.title }}" class="img-responsive" *ngIf="book?.imageUrl">
     </span>
+    <div class="text">
+        <h3 class="list-group-item-heading">{{ book?.title }}</h3>
+        <p>{{ book?.author }}</p>
+    </div>
 </a>

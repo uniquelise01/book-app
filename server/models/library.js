@@ -8,7 +8,7 @@ const librarySchema = mongoose.Schema({
    link: { type: String, required: false },
    published: { type: String, required: false },
    readlist: { type: Boolean, required: true },
-   series: [{ type: mongoose.Schema.Types.ObjectId, ref:'Book'}]
+   series: [{ type: mongoose.Schema.Types.ObjectId, ref:'library'}]
 });
 
-module.exports = mongoose.model('Library', librarySchema);
+module.exports = mongoose.model('library', librarySchema);

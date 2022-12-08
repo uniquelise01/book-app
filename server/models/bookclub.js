@@ -5,7 +5,7 @@ const bookclubSchema = mongoose.Schema({
    name: { type: String, required: true },
    phone: { type: String, required: false },
    imageUrl: { type: String, required: false },
-   favBooks: [{ type: mongoose.Schema.Types.ObjectId, ref:'Book' }]
+   favBooks: [{ type: mongoose.Schema.Types.ObjectId, ref:'library' }]
 });
 
-module.exports = mongoose.model('Bookclub', bookclubSchema);
+module.exports = mongoose.model('bookclub', bookclubSchema);

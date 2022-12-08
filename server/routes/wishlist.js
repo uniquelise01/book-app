@@ -22,6 +22,26 @@ router.get('/', (req, res, next) => {
         });
  });
 
+ router.get('/:id', (req, res, next) => {
+    Wishlist.findOne({
+        "id": req.params.id
+    })
+        .then(wishlist => {
+            res
+                .status(200)
+                .json({
+                    message: 'Wishlist fetched successfully!',
+                    wishlist: wishlist
+                });
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'An error occured',
+                error: error
+            });
+        });
+ });
+
 router.post('/', (req, res, next) => {
     const maxWishlistId = sequenceGenerator.nextId("wishlist");
   

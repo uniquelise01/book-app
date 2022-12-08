@@ -30,7 +30,7 @@ export class LibraryEditComponent implements OnInit {
         }
         this.libraryService.getBook(this.id)
           .subscribe(bookData => {
-            this.originalBook = bookData.book;
+            this.originalBook = bookData.library;
           });
 
         if (!this.originalBook){
