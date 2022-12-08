@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
@@ -13,6 +14,13 @@ import { LibraryDetailComponent } from './library/library-detail/library-detail.
 import { LibraryEditComponent } from './library/library-edit/library-edit.component';
 import { HeaderComponent } from './header.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LibraryItemComponent } from './library/library-item/library-item.component';
+import { ReadingListItemComponent } from './library/reading-list-item/reading-list-item.component';
+import { BookclubItemComponent } from './bookclub/bookclub-item/bookclub-item.component';
+import { WishlistItemComponent } from './wishlist/wishlist-item/wishlist-item.component';
+import { LibraryListComponent } from './library/library-list/library-list.component';
+import { LibraryFilterPipe } from './library/library-filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,11 +34,19 @@ import { AppRoutingModule } from './app-routing.module';
     WishlistEditComponent,
     LibraryDetailComponent,
     LibraryEditComponent,
-    HeaderComponent
+    HeaderComponent,
+    LibraryItemComponent,
+    ReadingListItemComponent,
+    BookclubItemComponent,
+    WishlistItemComponent,
+    LibraryListComponent,
+    LibraryFilterPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

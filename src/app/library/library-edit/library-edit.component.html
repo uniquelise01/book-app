@@ -1,1 +1,101 @@
-<p>library-edit works!</p>
+<div class="panel panel-default">
+    <div class="panel-body">
+  
+      <form id="document-edit" (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="row">
+          <div class="col-sm-12 form-group">
+            <label for="title">Book Title:</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              #title="ngModel"
+              [ngModel]="book?.title"
+              class="form-control"
+              size="120"
+              max="120"
+              required>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-sm-12 form-group">
+            <label for="author">Author:</label>
+            <input
+              type="text"
+              id="author"
+              name="author"
+              #author="ngModel"
+              [ngModel]="book?.author"
+              class="form-control"
+              size="120"
+              max="255"
+              required>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-sm-12 form-group">
+            <label for="imageUrl">Cover Image URL:</label>
+            <input
+              type="text"
+              id="imageUrl"
+              name="imageUrl"
+              #imageUrl="ngModel"
+              [ngModel]="book?.imageUrl"
+              class="form-control"
+              size="150"
+              max="255">
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 form-group">
+              <label for="link">Book URL:</label>
+              <input
+                type="text"
+                id="link"
+                name="link"
+                #link="ngModel"
+                [ngModel]="book?.link"
+                class="form-control"
+                size="150"
+                max="255">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <label for="published">Year Published:</label>
+              <input
+                type="text"
+                id="published"
+                name="published"
+                #published="ngModel"
+                [ngModel]="book?.published"
+                class="form-control"
+                size="150"
+                max="255">
+            </div>
+          </div>
+
+          <!-- Add additional form input for series option. I'm thinking a dropdown where you can select books already existing in your library. -->
+
+        <div class="row" *ngIf="!author.valid || !title.valid">
+            <div class="col-sm-12 alert alert-danger">
+              <p>The Book title and author are required fields.</p>
+            </div>
+          </div>
+  
+        <div class="row">
+          <div class="col-xs-12 btn-toolbar">
+            <button class="btn btn-success" type="submit" [disabled]="!f.valid">Save</button>
+            <button class="btn btn-primary" type="button" 
+            (click)="onCancel()">Cancel</button>
+          </div>
+        </div>
+  
+      </form>
+  
+    </div>
+  </div>  

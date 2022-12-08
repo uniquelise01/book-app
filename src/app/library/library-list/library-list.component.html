@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row pad-left-right">
+            <h3 class="col-sm-6 title">Library</h3>
+            <a routerLink="new" class="btn btn-success pull-right">Add Book</a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="input-group col-xs-6 searchBar">
+                <input type="text" #searchBox (keyup)="search(searchBox.value)" class="form-control" placeholder="Enter a search value">
+                <div class="glyphicon glyphicon-search input-group-addon" (click)="search(searchBox.value)"></div>
+            </div>
+        </div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item" [ngClass]="{active: librarySelected}">
+                <a class="nav-link pointer" aria-current="page" (click)="onSelectLibrary()">Library</a>
+            </li>
+            <li class="nav-item" [ngClass]="{active: !librarySelected}">
+                <a class="nav-link pointer" (click)="onSelectReadingList()">Reading List</a>
+            </li>
+        </ul>
+        <div *ngIf="librarySelected" class="center-panel container">
+            <app-library-item *ngFor="let book of books | libraryFilter:term " [book]="book"></app-library-item>
+        </div>
+        <div *ngIf="!librarySelected" class="center-panel container">
+            <app-reading-list-item *ngFor="let book of books | libraryFilter:term " [book]="book"></app-reading-list-item>
+        </div>
+    </div>
+</div>

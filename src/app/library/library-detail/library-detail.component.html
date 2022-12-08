@@ -1,1 +1,28 @@
-<p>library-detail works!</p>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h2>{{ book?.title }}</h2>
+                <p>{{ book?.author }}</p>
+                <div class="pull-left">
+                    <img [src]="book?.imageUrl" alt="{{ book?.title }}" class="img-responsive"
+                    *ngIf="book?.imageUrl">
+                </div>
+                <div class="pull-right btn-toolbar">
+                    <a routerLink="edit" class="btn btn-primary">Edit</a>
+                    <a class="btn btn-info" (click)="onView()">View</a>
+                    <a class="btn btn-danger" (click)="onDelete()">Delete</a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <p>{{ book?.published }}</p>
+                <div *ngIf="book.series!=[]">
+                    <p>Books in this series:</p>
+                    <ul>
+                        <li *ngFor="let series of book.series">{{ series.title }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
