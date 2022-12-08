@@ -20,7 +20,9 @@ import { BookclubItemComponent } from './bookclub/bookclub-item/bookclub-item.co
 import { WishlistItemComponent } from './wishlist/wishlist-item/wishlist-item.component';
 import { LibraryListComponent } from './library/library-list/library-list.component';
 import { LibraryFilterPipe } from './library/library-filter.pipe';
+import { BookclubFilterPipe } from './bookclub/bookclub-filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { BookclubListComponent } from './bookclub/bookclub-list/bookclub-list.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { FormsModule } from '@angular/forms';
     BookclubItemComponent,
     WishlistItemComponent,
     LibraryListComponent,
-    LibraryFilterPipe
+    LibraryFilterPipe,
+    BookclubListComponent,
+    BookclubFilterPipe
   ],
   imports: [
     BrowserModule,

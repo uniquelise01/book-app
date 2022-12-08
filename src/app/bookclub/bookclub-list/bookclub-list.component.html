@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row pad-left-right">
+            <h3 class="col-sm-6 title">Book Club</h3>
+            <a routerLink="new" class="btn btn-success pull-right">Add Contact</a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="input-group col-xs-6 searchBar">
+                <input type="text" #searchBox (keyup)="search(searchBox.value)" class="form-control" placeholder="Enter a search value">
+                <div class="glyphicon glyphicon-search input-group-addon" (click)="search(searchBox.value)"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 margin-top">
+                <app-bookclub-item *ngFor="let contact of contacts | bookclubFilter:term" [contact]="contact">
+                </app-bookclub-item>
+            </div>
+        </div>
+    </div>
+</div>

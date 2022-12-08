@@ -9,9 +9,9 @@ var logger = require('morgan');
 
 // import the routing file to handle the default (index) route
 var index = require('./server/routes/app');
-const wishlistRoutes = require('./server/routes/wishlists');
-const bookclubRoutes = require('./server/routes/bookclubs');
-const libraryRoutes = require('./server/routes/libraries');
+const wishlistRoutes = require('./server/routes/wishlist');
+const bookclubRoutes = require('./server/routes/bookclub');
+const libraryRoutes = require('./server/routes/library');
 
 // establish a connection to the mongo database
 mongoose.connect('mongodb://localhost:27017/Book-App',
