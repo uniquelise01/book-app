@@ -18,13 +18,7 @@ export class BookclubListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.bookclubService.getContacts();
 
-    this.bookclubService.bookclubChangedEvent.subscribe(
-      (contacts: Bookclub[]) => {
-        this.contacts = contacts;
-      }
-    )
-
-    this.subscription = this.bookclubService.bookclubChangedEvent.subscribe(
+    this.subscription = this.bookclubService.bookclubListChangedEvent.subscribe(
       (contactsList: Bookclub[]) => {
         this.contacts = contactsList;
       }

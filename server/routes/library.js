@@ -49,7 +49,7 @@ router.get('/', (req, res, next) => {
 router.post('/', (req, res, next) => {
     const maxLibraryId = sequenceGenerator.nextId("library");
   
-    const library = new Library({
+    const library = new Libraries({
         id: maxLibraryId,
         title: req.body.title,
         author: req.body.author,
@@ -76,7 +76,7 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:id', (req, res, next) => {
-    Library.findOne({ id: req.params.id })
+    Libraries.findOne({ id: req.params.id })
         .then(library => {
             library.title = req.body.title;
             library.author = req.body.author;
@@ -86,7 +86,7 @@ router.put('/:id', (req, res, next) => {
             library.readlist = req.body.readlist;
             library.series = req.body.series;
     
-            Library.updateOne({ id: req.params.id }, library)
+            Libraries.updateOne({ id: req.params.id }, library)
                 .then(result => {
                     res.status(204).json({
                     message: 'Library book updated successfully'
@@ -108,9 +108,9 @@ router.put('/:id', (req, res, next) => {
 });
 
 router.delete("/:id", (req, res, next) => {
-    Library.findOne({ id: req.params.id })
+    Libraries.findOne({ id: req.params.id })
       .then(library => {
-        Library.deleteOne({ id: req.params.id })
+        Libraries.deleteOne({ id: req.params.id })
           .then(result => {
             res.status(204).json({
               message: "Library book deleted successfully"

@@ -10,8 +10,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class LibraryService {
     books: Book[] = [];
-    librarySelectedEvent = new EventEmitter<Book>();
-    libraryChangedEvent = new EventEmitter<Book[]>();
+    // librarySelectedEvent = new EventEmitter<Book>();
+    // libraryChangedEvent = new EventEmitter<Book[]>();
     libraryListChangedEvent = new Subject<Book[]>();
     maxLibraryId: number;
 
@@ -31,8 +31,6 @@ export class LibraryService {
                 (responseData) => {
                    this.books = responseData.library;
                    this.sortAndSend();
-
-                   this.libraryChangedEvent.next(this.books.slice());
                 },
                 (error: any) => {
                    console.log(error);
@@ -102,13 +100,13 @@ export class LibraryService {
     
         const headers = new HttpHeaders({'Content-Type': 'application/json'});
     
-        this.http.post<{ message: string, book: Book }>('http://localhost:3000/library',
+        this.http.post<{ message: string, library: Book }>('http://localhost:3000/library',
           book,
           { headers: headers })
           .subscribe(
             (responseData) => {
               // add new document to documents
-              this.books.push(responseData.book);
+              this.books.push(responseData.library);
               this.sortAndSend();
             }
           );

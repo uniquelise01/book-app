@@ -10,7 +10,7 @@ import { WindRefService } from 'src/app/wind-ref.service';
   styleUrls: ['./library-detail.component.css']
 })
 export class LibraryDetailComponent implements OnInit {
-  book: Book;
+  @Input() book: Book;
   id: string;
   nativeWindow: any;
 
@@ -30,10 +30,15 @@ export class LibraryDetailComponent implements OnInit {
           this.libraryService.getBook(this.id)
             .subscribe(libraryData => {
               this.book = libraryData.library;
-              console.log(libraryData);
             });
         }
       );
+
+      this.libraryService.libraryListChangedEvent.subscribe(
+        (books: Book[]) => {
+          this.book = books.find(d => d.id === this.id);
+        }
+      )
   }
 
   onDelete() {
@@ -45,6 +50,18 @@ export class LibraryDetailComponent implements OnInit {
     if (this.book.link) {
       this.nativeWindow.open(this.book.link);
     }
+  }
+
+  onAddToList() {    
+    const newBook = new Book( this.book._id, this.book.id, this.book.title, this.book.author, this.book.imageUrl, this.book.link, this.book.published, true, this.book.series);
+    
+    this.libraryService.updateBook(this.book, newBook);
+  }
+
+  onRemoveFromList() {
+    const newBook = new Book( this.book._id, this.book.id, this.book.title, this.book.author, this.book.imageUrl, this.book.link, this.book.published, false, this.book.series);
+    
+    this.libraryService.updateBook(this.book, newBook);
   }
 
 }

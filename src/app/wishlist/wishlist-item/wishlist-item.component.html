@@ -1,1 +1,9 @@
-<p>wishlist-item works!</p>
+<a [routerLink]="[wishlistItem.id]" routerLinkActive="active" class="list-group-item clearfix">
+    <span class="pull-left">
+        <img [src]="wishlistItem?.imageUrl" alt="{{ wishlistItem?.title }}" class="img-responsive" *ngIf="wishlistItem?.imageUrl">
+    </span>
+    <div class="text">
+        <h3 class="list-group-item-heading">{{ wishlistItem?.title }}</h3>
+        <p>{{ wishlistItem?.author }}</p>
+    </div>
+</a>

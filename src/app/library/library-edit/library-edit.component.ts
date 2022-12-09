@@ -28,22 +28,27 @@ export class LibraryEditComponent implements OnInit {
           this.editMode = false;
           return;
         }
+
         this.libraryService.getBook(this.id)
           .subscribe(bookData => {
             this.originalBook = bookData.library;
-          });
 
-        if (!this.originalBook){
-          return;
-        }
-        this.editMode = true;
-        this.book = JSON.parse(JSON.stringify(this.originalBook));
-      })
+            if (!this.originalBook){
+              return;
+            }
+    
+            this.editMode = true;
+            this.book = JSON.parse(JSON.stringify(this.originalBook));
+          });
+        })
   }
 
   onSubmit(form: NgForm) {
     const value = form.value;
+    
+    //if someone edits a book, the readlist and series will automatically default to false and []. How can I pass in the info dynamically?
     const newBook = new Book( '', '', value.title, value.author, value.imageUrl, value.link, value.published, false, []);
+
     if (this.editMode) {
       this.libraryService.updateBook(this.originalBook, newBook);
     } else {

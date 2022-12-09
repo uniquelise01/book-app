@@ -1,4 +1,4 @@
-var Sequence = require('../models/sequences');
+var Sequence = require('../models/sequence');
 
 var maxLibraryId;
 var maxWishlistId;
@@ -16,10 +16,10 @@ function SequenceGenerator() {
         });
       }
 
-      sequenceId = Sequence._id;
-      maxLibraryId = Sequence.maxLibraryId;
-      maxWishlistId = Sequence.maxWishlistId;
-      maxBookclubId = Sequence.maxBookclubId;
+      sequenceId = sequence._id;
+      maxLibraryId = sequence.maxLibraryId;
+      maxWishlistId = sequence.maxWishlistId;
+      maxBookclubId = sequence.maxBookclubId;
     });
 }
 

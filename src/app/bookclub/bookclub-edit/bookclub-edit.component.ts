@@ -31,7 +31,7 @@ export class BookclubEditComponent implements OnInit {
 
         this.bookclubService.getContact(this.id)
           .subscribe(bookclubData => {
-            this.originalContact = bookclubData.contact;
+            this.originalContact = bookclubData.bookclub;
 
             if (!this.originalContact){
               return;
@@ -39,8 +39,7 @@ export class BookclubEditComponent implements OnInit {
             this.editMode = true;
             this.contact = JSON.parse(JSON.stringify(this.originalContact));
           });
-      }
-    )
+      })
   }
 
   onSubmit(form: NgForm) {

@@ -46,6 +46,8 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
     const maxBookclubId = sequenceGenerator.nextId("bookclub");
+
+    console.log(maxBookclubId);
   
     const bookclub = new Bookclub({
         id: maxBookclubId,

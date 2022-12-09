@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Wishlist } from '../wishlist.model';
 
 @Component({
   selector: 'app-wishlist-item',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wishlist-item.component.css']
 })
 export class WishlistItemComponent implements OnInit {
+  @Input() wishlistItem: Wishlist;
 
   constructor() { }
 

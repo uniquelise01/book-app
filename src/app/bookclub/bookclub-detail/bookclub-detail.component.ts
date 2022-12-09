@@ -24,7 +24,7 @@ export class BookclubDetailComponent implements OnInit {
           this.id = params['id'];
           this.bookclubService.getContact(this.id)
             .subscribe(contactData => {
-              this.contact = contactData.contact;
+              this.contact = contactData.bookclub;
             });
         }
       );

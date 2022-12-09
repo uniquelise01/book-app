@@ -20,16 +20,15 @@ export class BookclubService {
     }
 
     sortAndSend() {
-      this.contacts.sort((a, b) => a.name > b.name ? 1 : b.name > a.name ? -1 : 0);
       this.bookclubListChangedEvent.next(this.contacts.slice());
     }
 
     getContacts() {
         this.http
-            .get<{ message: string, contacts: Bookclub[]}>("http://localhost:3000/bookclub/")
+            .get<{ message: string, bookclub: Bookclub[]}>("http://localhost:3000/bookclub/")
             .subscribe(
                 (responseData) => {
-                   this.contacts = responseData.contacts;
+                   this.contacts = responseData.bookclub;
                    this.sortAndSend();
                 },
                 (error: any) => {
@@ -39,7 +38,7 @@ export class BookclubService {
     }
     
     getContact(id: string) {
-      return this.http.get<{ message: string, contact: Bookclub }>('http://localhost:3000/bookclub/' + id);
+      return this.http.get<{ message: string, bookclub: Bookclub }>('http://localhost:3000/bookclub/' + id);
     }
     
     
@@ -100,13 +99,12 @@ export class BookclubService {
     
         const headers = new HttpHeaders({'Content-Type': 'application/json'});
     
-        this.http.post<{ message: string, contact: Bookclub }>('http://localhost:3000/bookclub',
+        this.http.post<{ message: string, bookclub: Bookclub }>('http://localhost:3000/bookclub',
           contact,
           { headers: headers })
           .subscribe(
             (responseData) => {
-              // add new document to documents
-              this.contacts.push(responseData.contact);
+              this.contacts.push(responseData.bookclub);
               this.sortAndSend();
             }
           );
